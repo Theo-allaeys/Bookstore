@@ -1,0 +1,64 @@
+﻿@model Bookstore.Data.Book;
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>@Model.Title</h1>
+<hr />
+<h2>Details</h2>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <img src="~/images/@Model.ImgUrl" alt="" class="img-thumbnail">
+
+        </div>
+        <div class="col-sm">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Author)
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.Author.firstName @Model.Author.lastName
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.isbn13)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.isbn13)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Genre)
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.Genre.Name
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.pages)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.pages)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Format)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Format)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.price)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>

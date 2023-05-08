@@ -1,0 +1,26 @@
+﻿@using Bookstore.Data;
+@model IEnumerable<Bookstore.Models.BookModel>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1>Books</h1>
+<h2>Summary</h2>
+<hr />
+
+@foreach (var book in Model)
+{
+    <div class="card m-4" style="width: 18rem;">
+        <img class="card-img-top" src="~/images/@book.ImgUrl" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@book.Title</h5>
+
+            <p class="card-text">@book.Author.firstName @book.Author.lastName</p>
+            <div class="d-flex justify-content-between align-self-center">
+                <a asp-area="" asp-controller="Book" asp-action="Detail" asp-route-bookid="@book.Id" class="align-self-center">Detail</a>
+                <a asp-area="" asp-controller="Book" asp-action="Edit" asp-route-bookid="@book.Id" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+    </div>
+}

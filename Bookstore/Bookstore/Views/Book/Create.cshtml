@@ -1,0 +1,73 @@
+﻿@model Bookstore.Models.BookModel
+@using Bookstore.Data
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Address</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" data-val-required="titel verplicht" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="isbn13" class="control-label"></label>
+                <input asp-for="isbn13" data-val-required="isbn nummer verplicht" class="form-control" />
+                <span asp-validation-for="isbn13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pages" class="control-label"></label>
+                <input asp-for="pages" data-val-required="aantal paginas verplicht" class="form-control" />
+                <span asp-validation-for="pages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Format" class="control-label"></label>
+        <label class="radio-inline">
+                    <input type="radio" asp-for="Format" data-val-required="bookformaat is verplicht" value="hardcover" />hardcover
+                    <input type="radio" asp-for="Format" data-val-required="bookformaat is verplicht" value="paperback" />paperback
+                    <input type="radio" asp-for="Format" data-val-required="bookformaat is verplicht" value="Ebook" />Ebook
+        </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" data-val-required="prijs verplicht" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="author" class="control-label"></label>
+                <select asp-for="author" asp-items="@(new SelectList(Model.Authors, nameof(Author.Id),nameof(Author.lastName)))" class="form-control"></select>
+                <span asp-validation-for="author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label>
+                <select asp-for="Genre" asp-items="@(new SelectList(Model.Genres, nameof(Genre.Id), nameof(Genre.Name)))" class="form-control"></select>
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="img" class="control-label"></label>
+                <input asp-for="img" class="form-control" />
+                <span asp-validation-for="img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
